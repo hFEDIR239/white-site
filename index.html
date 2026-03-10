@@ -3,462 +3,836 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WHITE — Telegram Group Content Pack</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<title>WHITE — Media Buying Team</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --white: #ffffff;
-    --off-white: #f0ede8;
-    --black: #0a0a0a;
-    --accent: #c8ff00;
-    --accent2: #00ffd5;
-    --gray: #888;
-    --dark: #111;
-    --mid: #1a1a1a;
-  }
+:root {
+  --black: #080808;
+  --dark: #111;
+  --mid: #161616;
+  --card: #1a1a1a;
+  --white: #f5f5f5;
+  --gray: #666;
+  --accent: #c8ff00;
+  --accent2: #00e5ff;
+  --border: #222;
+}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-  body {
-    background: var(--black);
-    color: var(--white);
-    font-family: 'Montserrat', sans-serif;
-    line-height: 1.6;
-  }
+html { scroll-behavior: smooth; }
 
-  /* HEADER */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    padding: 60px 20px;
-  }
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Outfit', sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
 
-  .hero::before {
-    content: 'WHITE';
-    position: absolute;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(120px, 30vw, 400px);
-    color: rgba(255,255,255,0.03);
-    letter-spacing: -0.02em;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    white-space: nowrap;
-  }
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--accent); }
 
-  .hero-badge {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.3em;
-    color: var(--accent);
-    text-transform: uppercase;
-    border: 1px solid var(--accent);
-    padding: 6px 18px;
-    margin-bottom: 30px;
-    animation: pulse 2s infinite;
-  }
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
 
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
-  }
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 
-  .hero h1 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(60px, 15vw, 160px);
-    letter-spacing: 0.08em;
-    line-height: 0.9;
-    margin-bottom: 20px;
-    color: var(--white);
-  }
+/* SVG Logo inline */
+.logo-svg {
+  width: 36px;
+  height: 36px;
+}
 
-  .hero h1 span {
-    color: var(--accent);
-  }
+.nav-brand {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 0.15em;
+  color: var(--white);
+}
 
-  .hero-sub {
-    font-size: clamp(13px, 2vw, 17px);
-    font-weight: 300;
-    color: var(--gray);
-    max-width: 500px;
-    margin-bottom: 40px;
-    letter-spacing: 0.05em;
-  }
+.nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+}
 
-  .hero-stats {
-    display: flex;
-    gap: 40px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+.nav-links a {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gray);
+  text-decoration: none;
+  transition: color 0.2s;
+  font-family: 'JetBrains Mono', monospace;
+}
 
-  .stat {
-    text-align: center;
-  }
+.nav-links a:hover { color: var(--accent); }
 
-  .stat-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 42px;
-    color: var(--accent);
-    line-height: 1;
-  }
+.nav-cta {
+  background: var(--accent);
+  color: var(--black) !important;
+  padding: 10px 24px;
+  font-weight: 600 !important;
+  letter-spacing: 0.1em !important;
+}
 
-  .stat-label {
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    color: var(--gray);
-    text-transform: uppercase;
-    margin-top: 4px;
-  }
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 120px 40px 80px;
+  position: relative;
+  overflow: hidden;
+}
 
-  /* SECTIONS */
-  .section {
-    padding: 80px 20px;
-    max-width: 900px;
-    margin: 0 auto;
-  }
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse 60% 50% at 50% 0%, rgba(200,255,0,0.04) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 30% at 80% 80%, rgba(0,229,255,0.03) 0%, transparent 60%);
+}
 
-  .section-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.4em;
-    color: var(--accent);
-    text-transform: uppercase;
-    margin-bottom: 16px;
-  }
+/* Grid lines */
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
 
-  .section-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(36px, 8vw, 72px);
-    letter-spacing: 0.04em;
-    line-height: 1;
-    margin-bottom: 32px;
-  }
+.hero-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  color: var(--accent);
+  text-transform: uppercase;
+  border: 1px solid rgba(200,255,0,0.3);
+  padding: 8px 20px;
+  margin-bottom: 40px;
+  position: relative;
+  animation: fadeInDown 0.8s ease both;
+}
 
-  .divider {
-    height: 1px;
-    background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
-    margin: 0;
-    width: 100%;
-  }
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-  /* OFFER BLOCK */
-  .offer-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 2px;
-    margin-top: 40px;
-  }
+/* Big logo in hero */
+.hero-logo {
+  position: relative;
+  margin-bottom: 32px;
+  animation: fadeIn 1s ease 0.2s both;
+}
 
-  .offer-card {
-    background: var(--mid);
-    padding: 32px;
-    border-left: 2px solid transparent;
-    transition: border-color 0.3s;
-    cursor: default;
-  }
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
 
-  .offer-card:hover {
-    border-left-color: var(--accent);
-  }
+.hero-logo svg {
+  width: clamp(120px, 20vw, 200px);
+  height: auto;
+  filter: drop-shadow(0 0 40px rgba(200,255,0,0.15));
+}
 
-  .offer-icon {
-    font-size: 28px;
-    margin-bottom: 16px;
-  }
+.hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(80px, 18vw, 200px);
+  letter-spacing: 0.06em;
+  line-height: 0.85;
+  margin-bottom: 24px;
+  animation: fadeIn 1s ease 0.3s both;
+  position: relative;
+}
 
-  .offer-card h3 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px;
-    letter-spacing: 0.06em;
-    margin-bottom: 10px;
-    color: var(--white);
-  }
+.hero-title-ghost {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(100px, 22vw, 260px);
+  color: rgba(255,255,255,0.025);
+  white-space: nowrap;
+  pointer-events: none;
+  letter-spacing: 0.06em;
+}
 
-  .offer-card p {
-    font-size: 13px;
-    color: var(--gray);
-    line-height: 1.7;
-    font-weight: 300;
-  }
+.hero-sub {
+  font-size: clamp(14px, 2vw, 18px);
+  color: var(--gray);
+  font-weight: 300;
+  max-width: 520px;
+  margin-bottom: 50px;
+  animation: fadeIn 1s ease 0.4s both;
+  letter-spacing: 0.02em;
+}
 
-  /* FUNNEL */
-  .funnel {
-    margin-top: 40px;
-  }
+.hero-stats {
+  display: flex;
+  gap: clamp(24px, 5vw, 60px);
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 50px;
+  animation: fadeIn 1s ease 0.5s both;
+}
 
-  .funnel-step {
-    display: flex;
-    align-items: flex-start;
-    gap: 24px;
-    padding: 28px 0;
-    border-bottom: 1px solid #1f1f1f;
-  }
+.stat { text-align: center; }
 
-  .funnel-step:last-child {
-    border-bottom: none;
-  }
+.stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(36px, 6vw, 56px);
+  color: var(--accent);
+  line-height: 1;
+}
 
-  .step-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 48px;
-    color: var(--accent);
-    line-height: 1;
-    min-width: 48px;
-    opacity: 0.4;
-  }
+.stat-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  color: var(--gray);
+  text-transform: uppercase;
+  margin-top: 4px;
+}
 
-  .step-content h4 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px;
-    letter-spacing: 0.05em;
-    margin-bottom: 6px;
-  }
+.hero-cta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: fadeIn 1s ease 0.6s both;
+}
 
-  .step-content p {
-    font-size: 13px;
-    color: var(--gray);
-    font-weight: 300;
-    line-height: 1.7;
-  }
+.btn-primary {
+  background: var(--accent);
+  color: var(--black);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.12em;
+  padding: 16px 48px;
+  text-decoration: none;
+  transition: all 0.2s;
+  display: inline-block;
+}
 
-  /* PRICING */
-  .price-table {
-    margin-top: 40px;
-    border: 1px solid #222;
-  }
+.btn-primary:hover {
+  background: #d4ff1a;
+  transform: translateY(-2px);
+}
 
-  .price-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 22px 32px;
-    border-bottom: 1px solid #1a1a1a;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
+.btn-secondary {
+  border: 1px solid var(--border);
+  color: var(--white);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.12em;
+  padding: 16px 48px;
+  text-decoration: none;
+  transition: all 0.2s;
+  display: inline-block;
+}
 
-  .price-row:last-child {
-    border-bottom: none;
-  }
+.btn-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
 
-  .price-row:hover {
-    background: var(--mid);
-  }
+/* ── DIVIDER ── */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
 
-  .price-name {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 20px;
-    letter-spacing: 0.06em;
-    color: var(--white);
-  }
+.accent-divider {
+  height: 1px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  width: 80px;
+  margin: 0 auto 32px;
+}
 
-  .price-desc {
-    font-size: 12px;
-    color: var(--gray);
-    font-weight: 300;
-    margin-top: 2px;
-  }
+/* ── SECTIONS ── */
+.section {
+  padding: clamp(60px, 10vw, 120px) clamp(20px, 8vw, 100px);
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-  .price-val {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 14px;
-    color: var(--accent);
-    text-align: right;
-    white-space: nowrap;
-  }
+.section-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.4em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: block;
+}
 
-  .price-note {
-    background: var(--mid);
-    border-left: 2px solid var(--accent2);
-    padding: 20px 32px;
-    font-size: 13px;
-    color: var(--gray);
-    font-style: italic;
-    margin-top: 2px;
-  }
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(40px, 8vw, 80px);
+  letter-spacing: 0.04em;
+  line-height: 0.95;
+  margin-bottom: 16px;
+}
 
-  /* WHY US */
-  .why-list {
-    margin-top: 40px;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
+.section-sub {
+  font-size: 15px;
+  color: var(--gray);
+  font-weight: 300;
+  max-width: 500px;
+  margin-bottom: 60px;
+  line-height: 1.8;
+}
 
-  .why-item {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    background: var(--mid);
-    padding: 24px 28px;
-  }
+/* ── OFFER GRID ── */
+.offer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
 
-  .why-check {
-    color: var(--accent);
-    font-size: 20px;
-    flex-shrink: 0;
-  }
+.offer-card {
+  background: var(--card);
+  padding: 36px 32px;
+  transition: background 0.3s;
+  position: relative;
+  overflow: hidden;
+}
 
-  .why-text {
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-  }
+.offer-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 2px; height: 0;
+  background: var(--accent);
+  transition: height 0.4s;
+}
 
-  .why-sub {
-    font-size: 12px;
-    color: var(--gray);
-    font-weight: 300;
-    margin-top: 3px;
-  }
+.offer-card:hover { background: #1e1e1e; }
+.offer-card:hover::before { height: 100%; }
 
-  /* FAQ */
-  .faq-list {
-    margin-top: 40px;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
+.offer-icon {
+  font-size: 32px;
+  margin-bottom: 20px;
+  display: block;
+}
 
-  .faq-item {
-    background: var(--mid);
-    padding: 28px 32px;
-    border-left: 2px solid #2a2a2a;
-    transition: border-color 0.3s;
-  }
+.offer-card h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 24px;
+  letter-spacing: 0.06em;
+  margin-bottom: 12px;
+}
 
-  .faq-item:hover {
-    border-left-color: var(--accent2);
-  }
+.offer-card p {
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.8;
+  font-weight: 300;
+}
 
-  .faq-q {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 18px;
-    letter-spacing: 0.05em;
-    color: var(--white);
-    margin-bottom: 10px;
-  }
+/* ── FUNNEL ── */
+.funnel-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
 
-  .faq-a {
-    font-size: 13px;
-    color: var(--gray);
-    font-weight: 300;
-    line-height: 1.8;
-  }
+.funnel-steps { display: flex; flex-direction: column; gap: 0; }
 
-  /* CTA */
-  .cta-section {
-    background: var(--mid);
-    border-top: 2px solid var(--accent);
-    padding: 80px 20px;
-    text-align: center;
-  }
+.funnel-step {
+  display: flex;
+  gap: 28px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
 
-  .cta-section h2 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(40px, 10vw, 90px);
-    letter-spacing: 0.06em;
-    margin-bottom: 16px;
-    line-height: 1;
-  }
+.funnel-step:last-child { border-bottom: none; }
 
-  .cta-section p {
-    font-size: 14px;
-    color: var(--gray);
-    font-weight: 300;
-    margin-bottom: 40px;
-    letter-spacing: 0.05em;
-  }
+.step-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 52px;
+  color: rgba(200,255,0,0.2);
+  line-height: 1;
+  min-width: 52px;
+  transition: color 0.3s;
+}
 
-  .cta-btn {
-    display: inline-block;
-    background: var(--accent);
-    color: var(--black);
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px;
-    letter-spacing: 0.1em;
-    padding: 18px 52px;
-    text-decoration: none;
-    transition: transform 0.2s, background 0.2s;
-  }
+.funnel-step:hover .step-num { color: var(--accent); }
 
-  .cta-btn:hover {
-    transform: translateY(-2px);
-    background: var(--accent2);
-  }
+.step-body h4 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+  margin-top: 8px;
+}
 
-  /* COPY BOX */
-  .copy-section {
-    padding: 60px 20px;
-    max-width: 900px;
-    margin: 0 auto;
-  }
+.step-body p {
+  font-size: 13px;
+  color: var(--gray);
+  font-weight: 300;
+  line-height: 1.8;
+}
 
-  .copy-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 28px;
-    letter-spacing: 0.1em;
-    color: var(--accent);
-    margin-bottom: 20px;
-  }
+.funnel-aside {
+  position: sticky;
+  top: 100px;
+}
 
-  .copy-box {
-    background: #0d0d0d;
-    border: 1px solid #2a2a2a;
-    border-left: 3px solid var(--accent);
-    padding: 28px 32px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    line-height: 2;
-    color: #ccc;
-    white-space: pre-wrap;
-    word-break: break-word;
-    margin-bottom: 32px;
-    position: relative;
-  }
+.funnel-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--accent);
+  padding: 40px;
+}
 
-  .copy-label {
-    position: absolute;
-    top: -11px;
-    left: 20px;
-    background: var(--black);
-    font-size: 10px;
-    letter-spacing: 0.3em;
-    color: var(--accent);
-    padding: 0 10px;
-    text-transform: uppercase;
-  }
+.funnel-card h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  letter-spacing: 0.06em;
+  margin-bottom: 24px;
+  color: var(--accent);
+}
 
-  .copy-box em {
-    color: var(--accent2);
-    font-style: normal;
-  }
+.funnel-card ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
 
-  footer {
-    text-align: center;
-    padding: 40px 20px;
-    font-size: 11px;
-    color: #333;
-    letter-spacing: 0.2em;
-    font-family: 'JetBrains Mono', monospace;
-  }
+.funnel-card li {
+  font-size: 13px;
+  color: var(--gray);
+  display: flex;
+  gap: 12px;
+  line-height: 1.6;
+}
+
+.funnel-card li::before {
+  content: '→';
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+/* ── PRICE ── */
+.price-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin-bottom: 20px;
+}
+
+.price-row {
+  background: var(--card);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 36px;
+  gap: 20px;
+  flex-wrap: wrap;
+  transition: background 0.2s;
+}
+
+.price-row:hover { background: #1e1e1e; }
+
+.price-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 0.06em;
+}
+
+.price-desc {
+  font-size: 12px;
+  color: var(--gray);
+  font-weight: 300;
+  margin-top: 3px;
+}
+
+.price-val {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: var(--accent);
+  white-space: nowrap;
+  text-align: right;
+}
+
+.price-note {
+  background: rgba(200,255,0,0.04);
+  border-left: 2px solid var(--accent);
+  padding: 20px 28px;
+  font-size: 13px;
+  color: var(--gray);
+  font-style: italic;
+}
+
+/* ── WHY ── */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.why-card {
+  background: var(--card);
+  padding: 36px 32px;
+  display: flex;
+  gap: 20px;
+  transition: background 0.3s;
+}
+
+.why-card:hover { background: #1e1e1e; }
+
+.why-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.why-card h4 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.why-card p {
+  font-size: 13px;
+  color: var(--gray);
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+/* ── CLIENT ── */
+.client-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.client-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 36px;
+}
+
+.client-card h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.client-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.client-list li {
+  font-size: 13px;
+  color: var(--gray);
+  display: flex;
+  gap: 12px;
+  line-height: 1.6;
+}
+
+.client-list li::before {
+  content: '▪';
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+/* ── INVALID ── */
+.invalid-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin-bottom: 20px;
+}
+
+.invalid-item {
+  background: var(--card);
+  padding: 24px;
+  transition: background 0.2s;
+}
+
+.invalid-item:hover { background: #1e1e1e; }
+
+.invalid-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--accent);
+  letter-spacing: 0.2em;
+  margin-bottom: 8px;
+}
+
+.invalid-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.06em;
+  margin-bottom: 6px;
+}
+
+.invalid-desc {
+  font-size: 11px;
+  color: var(--gray);
+  line-height: 1.7;
+}
+
+/* ── FAQ ── */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.faq-item {
+  background: var(--card);
+  padding: 28px 36px;
+  border-left: 2px solid transparent;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.faq-item:hover {
+  background: #1e1e1e;
+  border-left-color: var(--accent2);
+}
+
+.faq-q {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-q::after {
+  content: '+';
+  font-size: 24px;
+  color: var(--gray);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+}
+
+.faq-a {
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.9;
+  font-weight: 300;
+}
+
+/* ── STATS BAR ── */
+.stats-bar {
+  background: var(--mid);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 40px clamp(20px, 8vw, 100px);
+  display: flex;
+  justify-content: center;
+  gap: clamp(30px, 8vw, 100px);
+  flex-wrap: wrap;
+}
+
+.stats-item { text-align: center; }
+
+.stats-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(36px, 6vw, 60px);
+  line-height: 1;
+  color: var(--white);
+}
+
+.stats-num span { color: var(--accent); }
+
+.stats-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  color: var(--gray);
+  text-transform: uppercase;
+  margin-top: 6px;
+}
+
+/* ── CTA ── */
+.cta-section {
+  background: var(--mid);
+  border-top: 1px solid var(--border);
+  text-align: center;
+  padding: clamp(60px, 10vw, 120px) 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+
+.cta-section h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(50px, 12vw, 120px);
+  letter-spacing: 0.06em;
+  line-height: 0.9;
+  margin-bottom: 20px;
+}
+
+.cta-section p {
+  font-size: 15px;
+  color: var(--gray);
+  font-weight: 300;
+  margin-bottom: 48px;
+  letter-spacing: 0.03em;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--black);
+  border-top: 1px solid var(--border);
+  padding: 40px clamp(20px, 8vw, 100px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-brand span {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.15em;
+  color: var(--gray);
+}
+
+.footer-copy {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: #333;
+  letter-spacing: 0.2em;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+  .funnel-wrap { grid-template-columns: 1fr; gap: 40px; }
+  .client-grid { grid-template-columns: 1fr; }
+  .funnel-aside { position: static; }
+  .section { padding: 60px 24px; }
+}
 </style>
 </head>
 <body>
 
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <svg class="logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="5" y="5" width="20" height="3" fill="white"/>
+      <rect x="5" y="5" width="3" height="20" fill="white"/>
+      <rect x="75" y="5" width="20" height="3" fill="white"/>
+      <rect x="92" y="5" width="3" height="20" fill="white"/>
+      <rect x="5" y="92" width="20" height="3" fill="white"/>
+      <rect x="5" y="75" width="3" height="20" fill="white"/>
+      <rect x="75" y="92" width="20" height="3" fill="white"/>
+      <rect x="92" y="75" width="3" height="20" fill="white"/>
+      <ellipse cx="50" cy="50" rx="28" ry="18" fill="white"/>
+      <circle cx="50" cy="50" r="11" fill="#080808"/>
+      <circle cx="50" cy="50" r="6" fill="white"/>
+    </svg>
+    <span class="nav-brand">WHITE</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#offer">Оффер</a></li>
+    <li><a href="#funnel">Как работаем</a></li>
+    <li><a href="#price">Прайс</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="https://t.me/vadim_marfione" class="nav-cta">Связаться</a></li>
+  </ul>
+</nav>
+
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-badge">Media Buying Team · Europe · Crypto & Finance</div>
-  <h1>WHITE<span>.</span></h1>
-  <p class="hero-sub">Арбитраж и таргет под крипту и финансы. Европа. Работаем по CPL — платишь только за результат.</p>
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-title-ghost">WHITE</div>
+
+  <div class="hero-eyebrow">Media Buying Team · Europe · Crypto & Finance</div>
+
+  <div class="hero-logo">
+    <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="10" y="10" width="40" height="5" fill="white"/>
+      <rect x="10" y="10" width="5" height="40" fill="white"/>
+      <rect x="150" y="10" width="40" height="5" fill="white"/>
+      <rect x="185" y="10" width="5" height="40" fill="white"/>
+      <rect x="10" y="185" width="40" height="5" fill="white"/>
+      <rect x="10" y="150" width="5" height="40" fill="white"/>
+      <rect x="150" y="185" width="40" height="5" fill="white"/>
+      <rect x="185" y="150" width="5" height="40" fill="white"/>
+      <ellipse cx="100" cy="100" rx="65" ry="42" fill="#e8e8e8"/>
+      <circle cx="100" cy="100" r="26" fill="#080808"/>
+      <circle cx="100" cy="100" r="14" fill="#e8e8e8"/>
+    </svg>
+  </div>
+
+  <h1 class="hero-title">WHITE</h1>
+
+  <p class="hero-sub">Медиабаинг команда под Европу. Арбитраж и таргет для крипты и финансов. Платишь только за лиды.</p>
+
   <div class="hero-stats">
     <div class="stat">
       <div class="stat-num">3+</div>
@@ -466,45 +840,78 @@
     </div>
     <div class="stat">
       <div class="stat-num">EU</div>
-      <div class="stat-label">гео покрытие</div>
+      <div class="stat-label">покрытие</div>
     </div>
     <div class="stat">
       <div class="stat-num">CPL</div>
-      <div class="stat-label">модель оплаты</div>
+      <div class="stat-label">модель</div>
     </div>
     <div class="stat">
       <div class="stat-num">48H</div>
       <div class="stat-label">старт</div>
     </div>
+    <div class="stat">
+      <div class="stat-num">~70%</div>
+      <div class="stat-label">дозвон/неделя</div>
+    </div>
+  </div>
+
+  <div class="hero-cta">
+    <a href="https://t.me/vadim_marfione" class="btn-primary">Написать менеджеру</a>
+    <a href="#offer" class="btn-secondary">Узнать больше</a>
   </div>
 </section>
 
 <div class="divider"></div>
 
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-item">
+    <div class="stats-num"><span>50–60%</span></div>
+    <div class="stats-label">Дозвон в день</div>
+  </div>
+  <div class="stats-item">
+    <div class="stats-num"><span>~70%</span></div>
+    <div class="stats-label">Дозвон в неделю</div>
+  </div>
+  <div class="stats-item">
+    <div class="stats-num"><span>5–6K</span></div>
+    <div class="stats-label">Средний чек</div>
+  </div>
+  <div class="stats-item">
+    <div class="stats-num"><span>100%</span></div>
+    <div class="stats-label">Замена невалида</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
 <!-- OFFER -->
-<section class="section">
-  <div class="section-label">// 01 — Оффер</div>
-  <div class="section-title">ЧТО МЫ<br>ПРОДАЁМ</div>
+<section class="section" id="offer">
+  <span class="section-tag">// 01 — Оффер</span>
+  <h2 class="section-title">ЧТО МЫ<br>ПРЕДЛАГАЕМ</h2>
+  <p class="section-sub">Собственные связки под EU рынок. Платишь только за лиды, не за показы.</p>
+
   <div class="offer-grid">
     <div class="offer-card">
-      <div class="offer-icon">⚡</div>
+      <span class="offer-icon">⚡</span>
       <h3>Арбитражный трафик</h3>
       <p>Собственные связки под крипту и финансы в Европе. Прогретые источники, стабильный поток лидов без скликивания.</p>
     </div>
     <div class="offer-card">
-      <div class="offer-icon">🎯</div>
+      <span class="offer-icon">🎯</span>
       <h3>Таргетированная реклама</h3>
-      <p>Ведение рекламных кампаний под ваш продукт. Facebook, TikTok, нативки — подбираем связку под вашу воронку.</p>
+      <p>Facebook, TikTok, нативки — подбираем связку под вашу воронку. Знаем, что работает прямо сейчас.</p>
     </div>
     <div class="offer-card">
-      <div class="offer-icon">🌍</div>
-      <h3>Гео: Европа</h3>
-      <p>Работаем с платёжеспособной аудиторией европейских рынков. Качественные лиды с хорошей конверсией в депозит.</p>
+      <span class="offer-icon">🌍</span>
+      <h3>Пул GEO: Европа</h3>
+      <p>Полностью EU регион. Пул гео подбираем индивидуально — исключаем ненужные страны, делаем упор на лучшие для вас.</p>
     </div>
     <div class="offer-card">
-      <div class="offer-icon">📊</div>
-      <h3>Ниши: Крипто и Финансы</h3>
-      <p>Глубокая экспертиза в вертикалях крипты и финансов. Знаем, что работает — и не тратим ваш бюджет на тесты.</p>
+      <span class="offer-icon">💎</span>
+      <h3>Крипта и Финансы</h3>
+      <p>Глубокая экспертиза в вертикалях. Аудитория 30–60 лет, с ПМЖ и трудоустройством, заинтересована в доходе.</p>
     </div>
   </div>
 </section>
@@ -512,43 +919,60 @@
 <div class="divider"></div>
 
 <!-- FUNNEL -->
-<section class="section">
-  <div class="section-label">// 02 — Воронка</div>
-  <div class="section-title">КАК МЫ<br>РАБОТАЕМ</div>
-  <div class="funnel">
-    <div class="funnel-step">
-      <div class="step-num">01</div>
-      <div class="step-content">
-        <h4>Первый контакт</h4>
-        <p>Ты пишешь нашему менеджеру. Кратко рассказываешь о продукте, воронке и желаемых объёмах. Без долгих брифов.</p>
+<section class="section" id="funnel">
+  <span class="section-tag">// 02 — Воронка</span>
+  <h2 class="section-title">КАК МЫ<br>РАБОТАЕМ</h2>
+  <p class="section-sub">Никаких недель согласований. Старт за 48 часов.</p>
+
+  <div class="funnel-wrap">
+    <div class="funnel-steps">
+      <div class="funnel-step">
+        <div class="step-num">01</div>
+        <div class="step-body">
+          <h4>Первый контакт</h4>
+          <p>Пишешь менеджеру. Кратко — о продукте, воронке и желаемых объёмах. Без долгих брифов.</p>
+        </div>
+      </div>
+      <div class="funnel-step">
+        <div class="step-num">02</div>
+        <div class="step-body">
+          <h4>Аудит воронки</h4>
+          <p>Смотрим твой лендинг и оффер. Даём рекомендации по связке. Бесплатно.</p>
+        </div>
+      </div>
+      <div class="funnel-step">
+        <div class="step-num">03</div>
+        <div class="step-body">
+          <h4>Условия и прайс</h4>
+          <p>Обсуждаем модель: CPL, тест или объёмный договор. Цена фиксируется индивидуально.</p>
+        </div>
+      </div>
+      <div class="funnel-step">
+        <div class="step-num">04</div>
+        <div class="step-body">
+          <h4>Старт за 48 часов</h4>
+          <p>Договорились — выходим на трафик. Это не маркетинг, это наш стандарт.</p>
+        </div>
+      </div>
+      <div class="funnel-step">
+        <div class="step-num">05</div>
+        <div class="step-body">
+          <h4>Отчёты и масштаб</h4>
+          <p>Статистика по запросу за любой период. Видишь результат — масштабируемся. Ограничений нет.</p>
+        </div>
       </div>
     </div>
-    <div class="funnel-step">
-      <div class="step-num">02</div>
-      <div class="step-content">
-        <h4>Аудит и обсуждение</h4>
-        <p>Смотрим твою воронку, оцениваем совместимость с нашим трафиком. Если нужно — даём рекомендации по лендингу и оверам. Бесплатно.</p>
-      </div>
-    </div>
-    <div class="funnel-step">
-      <div class="step-num">03</div>
-      <div class="step-content">
-        <h4>Условия и прайс</h4>
-        <p>Обсуждаем модель работы: базовый CPL или индивидуальные условия. Тесты рассматриваются — детали на переговорах.</p>
-      </div>
-    </div>
-    <div class="funnel-step">
-      <div class="step-num">04</div>
-      <div class="step-content">
-        <h4>Старт за 48 часов</h4>
-        <p>Никаких недельных согласований. После договорённости выходим на трафик в течение 48 часов.</p>
-      </div>
-    </div>
-    <div class="funnel-step">
-      <div class="step-num">05</div>
-      <div class="step-content">
-        <h4>Отчётность и масштаб</h4>
-        <p>Регулярные отчёты, прозрачная статистика. Видишь результат — масштабируемся вместе.</p>
+
+    <div class="funnel-aside">
+      <div class="funnel-card">
+        <h3>Портрет клиента</h3>
+        <ul>
+          <li>Возраст 30–60 лет, м/ж</li>
+          <li>ПМЖ или гражданство + трудоустройство</li>
+          <li>Заинтересованы в доп. доходе</li>
+          <li>Преимущественно без опыта</li>
+          <li>Целевая и платёжеспособная аудитория</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -556,109 +980,183 @@
 
 <div class="divider"></div>
 
-<!-- PRICING -->
-<section class="section">
-  <div class="section-label">// 03 — Цены</div>
-  <div class="section-title">ПРАЙС</div>
-  <div class="price-table">
+<!-- PRICE -->
+<section class="section" id="price">
+  <span class="section-tag">// 03 — Прайс</span>
+  <h2 class="section-title">УСЛОВИЯ<br>И ЦЕНЫ</h2>
+  <p class="section-sub">Базовый прайс + индивидуальные переговоры.</p>
+
+  <div class="price-wrap">
     <div class="price-row">
       <div>
-        <div class="price-name">CPL — Базовый</div>
-        <div class="price-desc">Фиксированная цена за лид, Европа, крипто/финансы</div>
+        <div class="price-name">CPL — За лид</div>
+        <div class="price-desc">Фиксированная цена за каждый лид. Европа, крипто/финансы.</div>
       </div>
       <div class="price-val">Уточняется у менеджера</div>
     </div>
     <div class="price-row">
       <div>
         <div class="price-name">Тестовый запуск</div>
-        <div class="price-desc">Пилотный объём для проверки связки и качества</div>
+        <div class="price-desc">Пилотный объём для проверки качества связки.</div>
       </div>
-      <div class="price-val">Условия индивидуально</div>
+      <div class="price-val">Индивидуально</div>
     </div>
     <div class="price-row">
       <div>
         <div class="price-name">Объёмный договор</div>
-        <div class="price-desc">Долгосрочное сотрудничество, фиксированный объём</div>
+        <div class="price-desc">Долгосрочное сотрудничество, фиксированный объём.</div>
       </div>
       <div class="price-val">Переговоры</div>
     </div>
   </div>
   <div class="price-note">
-    💡 Цена всегда обсуждается индивидуально — напиши менеджеру, расскажи о своём продукте, и мы назовём конкретную цифру.
+    💡 Оплата обсуждается индивидуально: крипта (USDT), банк. Всё фиксируется в официальном договоре.
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- WHY US -->
-<section class="section">
-  <div class="section-label">// 04 — Почему White</div>
-  <div class="section-title">ПОЧЕМУ<br>МЫ</div>
-  <div class="why-list">
-    <div class="why-item">
-      <div class="why-check">◆</div>
+<!-- WHY -->
+<section class="section" id="why">
+  <span class="section-tag">// 04 — Почему White</span>
+  <h2 class="section-title">ПОЧЕМУ<br>ВЫБИРАЮТ НАС</h2>
+
+  <div class="why-grid">
+    <div class="why-card">
+      <span class="why-icon">⏱</span>
       <div>
-        <div class="why-text">3+ года в нише</div>
-        <div class="why-sub">Работаем с крипто и финансами с 2021 года. Знаем, что работает сейчас.</div>
+        <h4>3+ года в нише</h4>
+        <p>Работаем с крипто и финансами с 2021 года. Знаем, что работает сейчас, а не год назад.</p>
       </div>
     </div>
-    <div class="why-item">
-      <div class="why-check">◆</div>
+    <div class="why-card">
+      <span class="why-icon">📊</span>
       <div>
-        <div class="why-text">Есть кейсы и результаты</div>
-        <div class="why-sub">Реальные цифры по Европе. Покажем на звонке — без воды и фотошопа.</div>
+        <h4>Реальные кейсы</h4>
+        <p>Реальные цифры по Европе. Покажем на звонке — без фотошопа и красивых скриншотов.</p>
       </div>
     </div>
-    <div class="why-item">
-      <div class="why-check">◆</div>
+    <div class="why-card">
+      <span class="why-icon">🚀</span>
       <div>
-        <div class="why-text">Старт без долгих согласований</div>
-        <div class="why-sub">Договорились — выходим на трафик в течение 48 часов. Не неделями.</div>
+        <h4>Старт за 48 часов</h4>
+        <p>Договорились — вышли на трафик. Без недель переписки и согласований.</p>
       </div>
     </div>
-    <div class="why-item">
-      <div class="why-check">◆</div>
+    <div class="why-card">
+      <span class="why-icon">💰</span>
       <div>
-        <div class="why-text">Платишь за результат</div>
-        <div class="why-sub">Модель CPL: ты платишь за лиды, а не за показы. Риски минимальны.</div>
+        <h4>CPL — платишь за результат</h4>
+        <p>Никакого риска на показы и клики. Ты платишь только когда есть лид.</p>
       </div>
     </div>
-    <div class="why-item">
-      <div class="why-check">◆</div>
+    <div class="why-card">
+      <span class="why-icon">🔄</span>
       <div>
-        <div class="why-text">Прозрачность</div>
-        <div class="why-sub">Регулярные отчёты, честная статистика, официальный договор.</div>
+        <h4>100% замена невалида</h4>
+        <p>Меняем все невалидные лиды на следующую закупку. Следим за качеством со своей стороны.</p>
       </div>
     </div>
+    <div class="why-card">
+      <span class="why-icon">📈</span>
+      <div>
+        <h4>Без ограничений по объёму</h4>
+        <p>Масштабируемся под партнёра. Просадка воронки решается оперативно.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- INVALID -->
+<section class="section" id="invalid">
+  <span class="section-tag">// 05 — Невалид</span>
+  <h2 class="section-title">ПОЛИТИКА<br>НЕВАЛИДА</h2>
+  <p class="section-sub">Прозрачные критерии. 100% замена. Контроль с нашей стороны.</p>
+
+  <div class="invalid-grid">
+    <div class="invalid-item">
+      <div class="invalid-num">01</div>
+      <div class="invalid-name">Wrong Number</div>
+      <div class="invalid-desc">Невалидные номера — не хватает цифр или очевидно неверные последовательности</div>
+    </div>
+    <div class="invalid-item">
+      <div class="invalid-num">02</div>
+      <div class="invalid-name">Underage</div>
+      <div class="invalid-desc">Несовершеннолетние</div>
+    </div>
+    <div class="invalid-item">
+      <div class="invalid-num">03</div>
+      <div class="invalid-name">Wrong Country</div>
+      <div class="invalid-desc">Неверная страна</div>
+    </div>
+    <div class="invalid-item">
+      <div class="invalid-num">04</div>
+      <div class="invalid-name">Wrong Info</div>
+      <div class="invalid-desc">Данные в диалоге не совпадают с регистрацией</div>
+    </div>
+    <div class="invalid-item">
+      <div class="invalid-num">05</div>
+      <div class="invalid-name">Wrong Language</div>
+      <div class="invalid-desc">Неверный язык</div>
+    </div>
+    <div class="invalid-item">
+      <div class="invalid-num">06</div>
+      <div class="invalid-name">Trash</div>
+      <div class="invalid-desc">Неадекватное поведение, рандомные данные</div>
+    </div>
+    <div class="invalid-item">
+      <div class="invalid-num">07</div>
+      <div class="invalid-name">Denied Registration</div>
+      <div class="invalid-desc">Утверждает что регистрация была более недели назад</div>
+    </div>
+    <div class="invalid-item">
+      <div class="invalid-num">08</div>
+      <div class="invalid-name">Ukrainian</div>
+      <div class="invalid-desc">100% невалид</div>
+    </div>
+  </div>
+  <div class="price-note">
+    🔄 Мы меняем 100% невалидных лидов на следующую закупку. При превышении порога — записи разговоров и пруфы обязательны.
   </div>
 </section>
 
 <div class="divider"></div>
 
 <!-- FAQ -->
-<section class="section">
-  <div class="section-label">// 05 — FAQ</div>
-  <div class="section-title">ЧАСТЫЕ<br>ВОПРОСЫ</div>
+<section class="section" id="faq">
+  <span class="section-tag">// 06 — FAQ</span>
+  <h2 class="section-title">ЧАСТЫЕ<br>ВОПРОСЫ</h2>
+
   <div class="faq-list">
     <div class="faq-item">
       <div class="faq-q">Как происходит оплата?</div>
-      <div class="faq-a">Работаем по предоплате или постоплате в зависимости от объёма и истории сотрудничества. Способ оплаты обсуждается индивидуально — крипта, банк, USDT. Всё фиксируется в договоре.</div>
+      <div class="faq-a">Условия оплаты обсуждаются индивидуально. Принимаем крипту (USDT), банк. Всё фиксируется в официальном договоре. Предоплата или постоплата зависит от объёма и истории сотрудничества.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Пул GEO — что это значит?</div>
+      <div class="faq-a">Полностью EU регион. Пул гео подбираем индивидуально под вас — исключаем ненужные страны, делаем упор на те, которые лучше идут у вас. Консультируем по актуальным гео, запрашивая информацию у наших брокеров.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Какой средний процент дозвона?</div>
+      <div class="faq-a">В среднем по дню — 50–60%, по неделе показатель достигает около 70%. Процент варьируется в зависимости от пула лидов. Если показатель опускается ниже 30% — самостоятельно прозваниваем лидов. Если результат тот же — переводим в невалид.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q">Есть ли гарантии на трафик?</div>
-      <div class="faq-a">Мы гарантируем качество лидов в рамках согласованных KPI. Перед стартом обсуждаем критерии «качественного лида» — и работаем по ним. Если что-то идёт не так, разбираем вместе.</div>
+      <div class="faq-a">Мы меняем 100% невалидных лидов на следующую закупку. Критерии невалида фиксируются до старта. Мы следим за невалидными лидами со своей стороны.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q">Как быстро стартуем?</div>
-      <div class="faq-a">После согласования условий — старт в течение 48 часов. Никаких бесконечных брифингов и согласований. Вы готовы — мы готовы.</div>
+      <div class="faq-a">48 часов после договорённости. Это наш стандарт, не маркетинговое обещание.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">С какими объёмами вы работаете?</div>
-      <div class="faq-a">Работаем как с небольшими тестовыми запусками, так и с крупными объёмами. Минимальный объём и условия уточняются у менеджера.</div>
+      <div class="faq-q">Какой средний чек?</div>
+      <div class="faq-a">Средний чек составляет ~5–6 тыс. Показатель варьируется в зависимости от гео и продукта.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">Какие ГЕО покрываете?</div>
-      <div class="faq-a">Основной фокус — Европа (Tier 1 и Tier 2). Под конкретные задачи обсуждаем расширение.</div>
+      <div class="faq-q">Можно ли масштабировать объёмы?</div>
+      <div class="faq-a">Ограничений по масштабированию нет. Объёмы подстраиваются индивидуально под партнёра. В случае просадки воронки проблема решается оперативно — на качество трафика это не влияет.</div>
     </div>
   </div>
 </section>
@@ -667,94 +1165,31 @@
 
 <!-- CTA -->
 <section class="cta-section">
-  <h2>ГОТОВ<br>РАБОТАТЬ?</h2>
-  <p>Напиши менеджеру — расскажи о своём продукте и объёмах.<br>Получи условия и старт за 48 часов.</p>
-  <a class="cta-btn" href="#">НАПИСАТЬ МЕНЕДЖЕРУ →</a>
+  <h2>ГОТОВ<br>СТАРТОВАТЬ?</h2>
+  <p>Расскажи о своём продукте — получи условия и старт за 48 часов.</p>
+  <a href="https://t.me/vadim_marfione" class="btn-primary">Написать менеджеру →</a>
 </section>
 
-<!-- ГОТОВЫЕ ТЕКСТЫ ДЛЯ TELEGRAM -->
-<section class="copy-section">
-  <div class="copy-title">// ГОТОВЫЕ ТЕКСТЫ ДЛЯ TELEGRAM</div>
-
-  <div class="copy-box">
-    <span class="copy-label">ПРИВЕТСТВЕННОЕ СООБЩЕНИЕ / ОПИСАНИЕ ГРУППЫ</span>
-Добро пожаловать в <em>WHITE</em> — медиабаинг команда под Европу 🇪🇺
-
-Мы специализируемся на арбитраже и таргете в нишах крипты и финансов.
-
-Здесь ты найдёшь:
-📌 Наш оффер и условия работы
-💰 Прайс и модели сотрудничества
-🔄 Как выглядит наша воронка
-🏆 Кейсы и результаты
-❓ Ответы на частые вопросы
-
-Хочешь трафик — пиши менеджеру: @[менеджер]</div>
-
-  <div class="copy-box">
-    <span class="copy-label">ПОСТ — ОФФЕР</span>
-⚡ <em>WHITE | Оффер</em>
-
-Мы — медиабаинг команда с фокусом на Европу.
-Работаем в нишах <em>крипты и финансов</em>.
-
-Что мы делаем:
-→ Арбитражный трафик (собственные связки)
-→ Таргетированная реклама (FB, TikTok, нативки)
-→ Лиды по модели CPL — платишь только за результат
-
-ГЕО: 🇪🇺 Европа (Tier 1 / Tier 2)
-Модель: CPL + индивидуальные условия
-Старт: в течение 48 часов после договорённости
-
-Хочешь узнать условия? → @[менеджер]</div>
-
-  <div class="copy-box">
-    <span class="copy-label">ПОСТ — ПОЧЕМУ WHITE</span>
-🏆 <em>Почему выбирают WHITE?</em>
-
-✅ 3+ года в нише крипты и финансов
-✅ Реальные кейсы по Европе — покажем на звонке
-✅ Старт за 48 часов — без недель согласований
-✅ CPL модель — платишь за лиды, не за воздух
-✅ Прозрачная отчётность и официальный договор
-
-Нет смысла гонять бюджет в одиночку, если можно работать с командой, которая знает, что работает прямо сейчас.
-
-Пиши: @[менеджер]</div>
-
-  <div class="copy-box">
-    <span class="copy-label">ПОСТ — FAQ (ЧАСТЬ 1)</span>
-❓ <em>Частые вопросы — отвечаем честно</em>
-
-<em>Как происходит оплата?</em>
-Предоплата или постоплата — зависит от объёма и истории сотрудничества. Способ: крипта, банк, USDT. Всё фиксируется в договоре.
-
-<em>Есть ли гарантии на трафик?</em>
-Работаем по согласованным KPI. Критерии "качественного лида" обсуждаем до старта. Если что-то идёт не так — разбираем вместе, не исчезаем.
-
-<em>Как быстро стартуем?</em>
-48 часов после договорённости. Всё серьёзно.
-
-Остались вопросы? → @[менеджер]</div>
-
-  <div class="copy-box">
-    <span class="copy-label">ПОСТ — ВОРОНКА / КАК МЫ РАБОТАЕМ</span>
-🔄 <em>Как выглядит работа с WHITE</em>
-
-01 → Пишешь менеджеру. Кратко о продукте и объёмах.
-02 → Смотрим твою воронку. Даём рекомендации (бесплатно).
-03 → Обсуждаем условия: CPL, тест или объёмный договор.
-04 → Старт за 48 часов.
-05 → Отчёты, статистика, масштаб.
-
-Никаких лишних шагов. Только результат.
-
-📩 @[менеджер]</div>
-
-</section>
-
-<footer>WHITE MEDIA BUYING TEAM · EUROPE · CRYPTO & FINANCE · 2025</footer>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <svg width="28" height="28" viewBox="0 0 100 100" fill="none">
+      <rect x="5" y="5" width="18" height="3" fill="#666"/>
+      <rect x="5" y="5" width="3" height="18" fill="#666"/>
+      <rect x="77" y="5" width="18" height="3" fill="#666"/>
+      <rect x="92" y="5" width="3" height="18" fill="#666"/>
+      <rect x="5" y="92" width="18" height="3" fill="#666"/>
+      <rect x="5" y="77" width="3" height="18" fill="#666"/>
+      <rect x="77" y="92" width="18" height="3" fill="#666"/>
+      <rect x="92" y="77" width="3" height="18" fill="#666"/>
+      <ellipse cx="50" cy="50" rx="26" ry="17" fill="#444"/>
+      <circle cx="50" cy="50" r="10" fill="#080808"/>
+      <circle cx="50" cy="50" r="5" fill="#444"/>
+    </svg>
+    <span>WHITE MEDIA BUYING</span>
+  </div>
+  <div class="footer-copy">EUROPE · CRYPTO & FINANCE · 2025</div>
+</footer>
 
 </body>
 </html>
